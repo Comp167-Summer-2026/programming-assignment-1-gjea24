@@ -1,16 +1,67 @@
+import java.util.Scanner;
+
 public class TemperatureConverter {
 
-    /* hint
-
     public static double convertTemperature(double temperature, String unit) {
-        // TODO: students implement this
-        return 0.0;
-    }
 
-     */
+        if (unit.equals("C")) {
+            return (temperature * 9.0 / 5.0) + 32;
+        }
+        else {
+            return (temperature - 32) * 5.0 / 9.0;
+        }
+    }
 
     public static void main(String[] args) {
-        // TODO: students implement this
-    }
 
+        Scanner scnr = new Scanner(System.in);
+
+        String userInput = "";
+        boolean keepGoing = true;
+
+        while (keepGoing) {
+
+            System.out.print("Enter a temperature value or type stop to quit: ");
+
+            if (scnr.hasNextDouble()) {
+
+                double temperature = scnr.nextDouble();
+                scnr.nextLine();
+
+                System.out.print("Enter the unit (C or F): ");
+                String unit = scnr.nextLine();
+
+                if (unit.equals("C") || unit.equals("F")) {
+
+                    double convertedTemp =
+                            convertTemperature(temperature, unit);
+
+                    if (unit.equals("C")) {
+                        System.out.printf("%.2f°C is equal to %.2f°F%n",
+                                temperature, convertedTemp);
+                    }
+                    else {
+                        System.out.printf("%.2f°F is equal to %.2f°C%n",
+                                temperature, convertedTemp);
+                    }
+                }
+                else {
+                    System.out.println("Error: Invalid unit.");
+                }
+            }
+            else {
+
+                userInput = scnr.nextLine();
+
+                if (userInput.equals("stop")) {
+                    keepGoing = false;
+                }
+                else {
+                    System.out.println("Error: Invalid temperature input.");
+                }
+            }
+        }
+
+        System.out.println("Program ended.");
+    }
 }
