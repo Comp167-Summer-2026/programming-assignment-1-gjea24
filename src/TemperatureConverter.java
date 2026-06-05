@@ -37,11 +37,11 @@ public class TemperatureConverter {
                             convertTemperature(temperature, unit);
 
                     if (unit.equals("C")) {
-                        System.out.printf("%.2f°C is equal to %.2f°F%n",
+                        System.out.printf("%.2f C is equal to %.2f F%n",
                                 temperature, convertedTemp);
                     }
                     else {
-                        System.out.printf("%.2f°F is equal to %.2f°C%n",
+                        System.out.printf("%.2f F is equal to %.2f C%n",
                                 temperature, convertedTemp);
                     }
                 }
